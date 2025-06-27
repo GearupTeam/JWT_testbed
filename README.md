@@ -9,7 +9,7 @@ You can quickly run the vulnerable JWT testbed locally using Docker.
 ### 📦 Step 1: Unzip and Enter the Project
 
 ```bash
-unzip jwt-testbed-updated.zip
+git clone https://github.com/GearupTeam/JWT_testbed.git
 cd jwt-testbed
 ```
 
