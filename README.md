@@ -1,16 +1,54 @@
-Deploy Locally with Docker
-📦 Step 1: Unzip the project
-If you downloaded the ZIP:
+Here is a beautifully formatted version of your **local Docker deployment instructions**, ready to be pasted into your `README.md` on GitHub:
 
+---
+
+## 🚀 Local Deployment (Docker)
+
+You can quickly run the vulnerable JWT testbed locally using Docker.
+
+### 📦 Step 1: Unzip and Enter the Project
+
+```bash
 unzip jwt-testbed-updated.zip
 cd jwt-testbed
-🛠️ Step 2: Build the Docker image
+```
 
+---
+
+### 🛠️ Step 2: Build the Docker Image
+
+```bash
 docker build -t jwt-testbed .
-🚀 Step 3: Run the container
+```
 
+---
+
+### 🚀 Step 3: Run the Docker Container
+
+```bash
 docker run -p 3000:3000 jwt-testbed
-Your vulnerable app is now live at:
+```
 
-http://localhost:3000/login.html
-http://localhost:3000/admin.html
+---
+
+### 🌐 Access the App in Your Browser
+
+* 🔑 Login Page: [http://localhost:3000/login.html](http://localhost:3000/login.html)
+* 🛠️ Admin Panel: [http://localhost:3000/admin.html](http://localhost:3000/admin.html)
+
+---
+
+### 📌 Default Users
+
+| Username | Password    | Role  |
+| -------- | ----------- | ----- |
+| `admin`  | `adminpass` | admin |
+| `user1`  | `userpass`  | user  |
+
+---
+
+Let me know if you also want:
+
+* A `docker-compose.yml` version
+* A GitHub Actions workflow to deploy it
+* A GitHub Pages badge or preview setup
