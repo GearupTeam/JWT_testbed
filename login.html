@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input id="username" placeholder="Username"><br>
+    <input id="password" placeholder="Password" type="password"><br>
+    <select id="alg">
+      <option value="RS256">RS256</option>
+      <option value="HS256">HS256</option>
+      <option value="none">none</option>
+    </select><br>
+    <input id="kid" placeholder="kid value" value="test"><br>
+    <button type="submit">Login</button>
+  </form>
+  <pre id="token"></pre>
+
+  <script>
+    document.getElementById("loginForm").onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+          alg: alg.value,
+          kid: kid.value
+        })
+      });
+      const data = await res.json();
+      token.innerText = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

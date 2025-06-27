@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Admin Panel</h2>
+  <form id="addForm">
+    <h3>Add User</h3>
+    <input placeholder="Username" id="addUser"><br>
+    <input placeholder="Password" id="addPass" type="password"><br>
+    <select id="addRole">
+      <option value="user">user</option>
+      <option value="admin">admin</option>
+    </select><br>
+    <button type="submit">Add User</button>
+  </form>
+
+  <form id="delForm">
+    <h3>Delete User</h3>
+    <input placeholder="Username" id="delUser"><br>
+    <button type="submit">Delete User</button>
+  </form>
+
+  <pre id="result"></pre>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    document.getElementById("addForm").onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/admin/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({
+          username: addUser.value,
+          password: addPass.value,
+          role: addRole.value
+        })
+      });
+      result.innerText = await res.text();
+    };
+
+    document.getElementById("delForm").onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/admin/delete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({ username: delUser.value })
+      });
+      result.innerText = await res.text();
+    };
+  </script>
+</body>
+</html>
